@@ -110,7 +110,7 @@ func (bw *BlockWriter) Close() error {
 func (bw *BlockWriter) connectNext() error {
 	address := getDatanodeAddress(bw.currentPipeline()[0])
 
-	conn, err := net.DialTimeout("tcp", address, connectTimeout)
+	conn, err := dialer("tcp", address, connectTimeout)
 	if err != nil {
 		return err
 	}

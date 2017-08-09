@@ -61,7 +61,7 @@ func (err *NamenodeError) Error() string {
 // You probably want to use hdfs.New instead, which provides a higher-level
 // interface.
 func NewNamenodeConnection(address, user string) (*NamenodeConnection, error) {
-	conn, err := net.DialTimeout("tcp", address, connectTimeout)
+	conn, err := dialer("tcp", address, connectTimeout)
 	if err != nil {
 		return nil, err
 	}

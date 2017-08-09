@@ -112,7 +112,7 @@ func (br *BlockReader) Close() error {
 func (br *BlockReader) connectNext() error {
 	address := br.datanodes.next()
 
-	conn, err := net.DialTimeout("tcp", address, connectTimeout)
+	conn, err := dialer("tcp", address, connectTimeout)
 	if err != nil {
 		return err
 	}
